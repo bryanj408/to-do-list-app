@@ -7,14 +7,14 @@ function newItem(){
     li.append(inputValue);
 
    if (inputValue === '') {
-     alert("You must write something!");
+     alert('You must write something!'');
    } else {
      $('#list').append(li);
    }
 
  //2. Crossing out an item from the list of items:
    function crossOut() {
- 		li.toggleClass("strike");
+ 		li.toggleClass('strike');
  	}
 //added double click feature to cross/un-cross lines out
  	li.on('dblclick', function crossOut() {
@@ -22,11 +22,12 @@ function newItem(){
   });
 
  //3(i). Adding the delete button "X":
-   let crossOutButton = document.createElement("crossOutButton");
- 	crossOutButton.appendChild(document.createTextNode("X"));
- 	li.appendChild(crossOutButton);
+   let crossOutButton = $('<crossOutButton></crossOutButton>');
+   crossOutButton.append(document.createTextNode('X'));
+   li.append(crossOutButton);
+   crossOutButton.on('click', deleteListItem);
 
- 	crossOutButton.addEventListener("click", deleteListItem);
+ 	
  //3(ii). Adding CLASS DELETE (DISPLAY: NONE) from the css:
    function deleteListItem(){
  		li.classList.add("delete")
